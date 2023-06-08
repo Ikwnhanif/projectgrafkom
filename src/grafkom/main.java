@@ -22,8 +22,9 @@ public class main {
     public static void main(String[] args) {
         Gambar frame = new Gambar();
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setResizable(true);
+        frame.setResizable(false);
         frame.setVisible(true);
+        
     }
     
 }

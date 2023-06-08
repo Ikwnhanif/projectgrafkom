@@ -14,6 +14,7 @@ import java.awt.geom.AffineTransform;
 import java.awt.geom.Ellipse2D;
 import java.awt.geom.Rectangle2D;
 import java.util.ArrayList;
+import javax.swing.border.Border;
 /**
  *
  * @author User
@@ -39,6 +40,8 @@ public class Bentuk extends JComponent{
     int nowX, nowY, oldX, oldY;
 
     public Bentuk() {
+        Border border = BorderFactory.createLineBorder(Color.BLACK);
+        setBorder(border);
         addMouseListener(new MouseAdapter() {
             @Override
             public void mousePressed(MouseEvent e) {
@@ -96,6 +99,7 @@ public class Bentuk extends JComponent{
                 }
             }
         });
+        
     }
 
     public void paintComponent(Graphics g) {

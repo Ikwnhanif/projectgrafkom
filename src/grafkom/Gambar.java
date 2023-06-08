@@ -27,6 +27,7 @@ public class Gambar extends JFrame{
     private final JPanel panel3;
     
     private Bentuk shaping = new Bentuk();
+    
     Color lineColor = Color.BLACK;
     Color fillColor = Color.WHITE;
 
@@ -63,12 +64,13 @@ public class Gambar extends JFrame{
     JButton skewbtn = new JButton("Shear");
 
     String ObjDat[][] = {{"Drawline", "asset\\pensil.png"},
+            {"Line", "asset\\garismiring.png"},
             {"Square", "asset\\square.png"},
             {"Rectangle", "asset\\rectangle.png"},
             {"Triangle", "asset\\triangle.png"},
             {"Circle", "asset\\circle.png"},
             {"Oval", "asset\\oval.png"},
-            {"Line", "asset\\garismiring.png"}
+            
     };
 
     String CusLineDat[][] = {{"Line", "asset\\linelurus.png"},
@@ -86,18 +88,29 @@ public class Gambar extends JFrame{
         setResizable(false);
         
         panel1 = new JPanel();
+        panel1.setBackground(Color.white);
+        
         panel2 = new JPanel();
+        panel2.setBackground(Color.white);
+        panel2.setPreferredSize(new Dimension(800, 75));
+        panel2.setLayout(new FlowLayout(FlowLayout.CENTER));
+   
         panel3 = new JPanel();
+        panel3.setBackground(Color.white);
+        panel3.setPreferredSize(new Dimension(180, 800));
+        panel3.setLayout(new FlowLayout(FlowLayout.CENTER));
+        
+      
         Container container = this.getContentPane();
         container.setLayout(new BorderLayout());
-
+        container.setBackground(Color.white);
+        
         container.add(panel1, BorderLayout.SOUTH);
         container.add(panel2, BorderLayout.NORTH);
         container.add(panel3, BorderLayout.WEST);
         container.add(shaping, BorderLayout.CENTER);
 
-        
-
+       
         box.add(ltrans);
         box.add(ltransx);
         box.add(intransx);
@@ -106,13 +119,15 @@ public class Gambar extends JFrame{
         box.add(intransy);
 
         box.add(transbtn);
-        box.add(tspace);
+        
+        box.add(tspace2);
         transbtn.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 prosesTranslasi();
             }
-        });
+        }); 
+      
         box.add(lrot);
         box.add(inrot);
         box.add(rotbtn);
@@ -157,16 +172,18 @@ public class Gambar extends JFrame{
         for (int i = 0; i < ObjDat.length; i++) {
             makeObjBtn(ObjDat[i][1], ObjDat[i][0]);
         }
-
+        
+        panel2.add(lstr);
+        for (int i = 0; i < CusLineDat.length; i++) {
+            makeCusLineBtn(CusLineDat[i][1], CusLineDat[i][0]);
+        }
+        
         panel2.add(lteb);
         for (int i = 0; i < StrDat.length; i++) {
             makeStrLineBtn(StrDat[i]);
         }
 
-        panel2.add(lstr);
-        for (int i = 0; i < CusLineDat.length; i++) {
-            makeCusLineBtn(CusLineDat[i][1], CusLineDat[i][0]);
-        }
+        
       
 
         JButton btnFillColor = new JButton("Fill Color");
@@ -207,7 +224,7 @@ public class Gambar extends JFrame{
                 if (color != null) {
                     lineColor = color;
                     shaping.lineColor = color;
-                    shaping.fillColor = Color.white;
+                    shaping.fillColor = Color.black;
                 }
             }
         });
@@ -232,7 +249,7 @@ public class Gambar extends JFrame{
         JButton objButton = new JButton();
         objButton.setPreferredSize(new Dimension(50, 50));
         try {
-            scaled = ImageIO.read(new File(path)).getScaledInstance(25, 25, Image.SCALE_SMOOTH);
+            scaled = ImageIO.read(new File(path)).getScaledInstance(40, 40, Image.SCALE_SMOOTH);
             objButton.setIcon(new ImageIcon(scaled));
         } catch (IOException e) {
             e.printStackTrace();
@@ -254,7 +271,7 @@ public class Gambar extends JFrame{
         JButton objButton = new JButton();
         objButton.setPreferredSize(new Dimension(50, 50));
         try {
-            scaled = ImageIO.read(new File(path)).getScaledInstance(25, 25, Image.SCALE_SMOOTH);
+            scaled = ImageIO.read(new File(path)).getScaledInstance(35, 35, Image.SCALE_SMOOTH);
             objButton.setIcon(new ImageIcon(scaled));
         } catch (IOException e) {
             e.printStackTrace();
